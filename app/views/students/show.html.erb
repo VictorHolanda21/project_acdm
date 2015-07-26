@@ -1,0 +1,33 @@
+<h2><%= @student.user_name %> </h2>
+
+<p>
+	<strong><%= :id %>: </strong>
+	<%= @student.id %>
+<p>
+	<strong><%= :full_name %>: </strong>
+	<%= @student.full_name %>
+</p>
+<p>
+	<strong><%= :user_name %>: </strong>
+	<%= @student.user_name %>
+</p>
+<p>
+	<strong><%= :email %>: </strong>
+	<%= @student.email %>
+</p>
+<p>
+	<strong><%= :password %>: </strong>
+	<%= @student.password %>
+</p>
+<p>
+	<strong><%= :created_at %>: </strong>
+	<%= @student.created_at %>
+</p>
+</p>
+<p>
+	<strong><%= :updated_at %>: </strong>
+	<%= @student.updated_at %>
+</p>
+
+<%= link_to :edit, edit_student_path %>
+<%= link_to :back, students_path %>
