@@ -1,3 +1,19 @@
+<% if @student.errors.any? %>
+	<div class="alert panel panel-danger danger">
+		<div class="panel-heading">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			Infelizmente não foi possível completar a ação pois o formulário possui os seguintes erros:
+		</div>
+		<div class="panel-body">
+			<ul>
+				<% @student.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+<% end %>
+
 <%= form_for @student do |f| %>
 
 	<div class="form-group">
@@ -17,9 +33,15 @@
 
 	<div class="form-group">
 		<%= f.label :password %> <br>
-		<%= f.text_field :password, :placeholder => :password , :class => "form-control" %>
+		<%= f.password_field :password, :placeholder => :password , :class => "form-control" %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :password_confirmation %> <br>
+		<%= f.password_field :password_confirmation, :placeholder => :password_confirmation , :class => "form-control" %>
 	</div>
 	
 	<%= f.submit :save, :class => 'btn btn-success btn-lg', data: { :toggle => "tooltip"}, :title => :save %>
 	<%= link_to :back, students_path, :class=> "btn btn-danger btn-lg btn-right" %>
 <% end %>
+<hr>

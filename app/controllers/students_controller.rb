@@ -37,11 +37,11 @@ class StudentsController < ApplicationController
 		@student = Student.find(params[:id])
 		@student.destroy
 
-		redirect_to students_path, notice: "Aluno #{@student.full_name} deletado!"
+		redirect_to students_path, notice: "Aluno #{@student.full_name} foi deletado com sucesso!"
 	end
 	private
 
 	def student_params
-		params.require(:student).permit(:full_name, :user_name, :email, :password)
+		params.require(:student).permit(:full_name, :user_name, :email, :password, :password_confirmation)
 	end
 end
