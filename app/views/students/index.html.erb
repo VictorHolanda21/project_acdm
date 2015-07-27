@@ -1,32 +1,49 @@
-<p><%= notice %></p>
+<% if notice %>
+	<div class="alert alert-success fade in">
+		<strong>
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<p><%= notice %></p>
+		</strong>
+	</div>
+<% end %>
 
-<h1>Alunos </h1>
-<%= link_to :new, new_student_path %>
-<hr>
-<table>
+<div class="well clearfix">
+	<h1> Alunos </h1>
+</div>
+
+<table class="table table-hover table-condensed table-striped">
 	<thead>
 		<th>Nome de Usuário </th>
 		<th>Email </th>
 		<th>Criado em </th>
-		<th colspan="3"></th>
+		<th colspan="3">Ações</th>
 	</thead>
 
 	<tbody>
-		<% if @students.count == 0 %>
-			<p>Você não possui alunos cadastrado </p>
-		<% else %>
-			<h2>Há <%= @students.count %> alunos cadastrados</h2>
+		
+			<% if @students.count == 0 %>
+				<tr>
+					<td colspan="6" class="danger">
+						<p class="text-center text-default"><strong> Você não possui alunos cadastrados.</strong></p>
+					</td>
+				</tr>
+			<% end %>		
+
 			<% @students.each do |student| %>
 				<tr>
 					<td><%= student.user_name %></td>
 					<td><%= student.email %></td>
 					<td><%= student.created_at %></td>
-					<td><%= link_to :show, student_path(student) %></td>
-					<td><%= link_to :edit, edit_student_path(student) %></td>
-					<td><%= link_to :delete, student, method: :delete, data: {confirm: "Are you sure?"} %></td>
+					<td>
+						<%= link_to :show, student_path(student), :class => "btn btn-info"  %>
+						<%= link_to :edit, edit_student_path(student), :class => "btn btn-warning" %>
+						<%= link_to :delete, student, method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-danger" %>
+					</td>
 				</tr>
 			<% end %>
-		<% end %>
 	</tbody>
 </table>
-<br>
+
+<div class="well clearfix">
+	<%= link_to :new_student, new_student_path, :class => "btn btn-success btn-lg pull-right" %>
+</div>
