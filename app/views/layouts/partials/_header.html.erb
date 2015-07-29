@@ -1,0 +1,23 @@
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Projeto Acdm", root_path, :class => "navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to :home, root_path %></li>
+		<li><%= link_to :about, about_path %></li>
+		<li><%= link_to :student, students_path %></li>
+		<li><a href="#">Turma</a></li>
+		<li><a href="#">Instrutor</a></li>
+		<li><a href="#">Curso</a></li>
+		<li><%= link_to :contact, contact_path %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
