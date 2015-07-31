@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :students
+  resources :teachers
 
   get '/about', to: 'welcome#about'
   get '/contact', to: 'welcome#contact'

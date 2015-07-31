@@ -1,0 +1,34 @@
+<h2><%= @teacher.user_name %> </h2>
+
+<p>
+	<strong><%= :id %>: </strong>
+	<%= @teacher.id %>
+<p>
+	<strong><%= :full_name %>: </strong>
+	<%= @teacher.full_name %>
+</p>
+<p>
+	<strong><%= :user_name %>: </strong>
+	<%= @teacher.user_name %>
+</p>
+<p>
+	<strong><%= :email %>: </strong>
+	<%= @teacher.email %>
+</p>
+<p>
+	<strong><%= :password %>: </strong>
+	<%= @teacher.password %>
+</p>
+<p>
+	<strong><%= :created_at %>: </strong>
+	<%= @teacher.created_at %>
+</p>
+</p>
+<p>
+	<strong><%= :updated_at %>: </strong>
+	<%= @teacher.updated_at %>
+</p>
+
+<%= link_to :edit, edit_teacher_path %>
+<%= link_to :back, teachers_path %>
+<%= link_to :delete, @teacher.destroy %>

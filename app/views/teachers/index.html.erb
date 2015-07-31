@@ -1,0 +1,32 @@
+<h1>List of Teachers</h1>
+
+<table>
+	<tr>
+		<th>Teacher</th>
+		<th>Email</th>
+		<th>Created on</th>
+	</tr>
+
+		<tbody>
+			<% if @teachers.count == 0 %>
+				<p>Not Registered Teachers</p>
+			<% else %>
+				<h2>There is <% @teachers.size %> teachers registered</h2>
+		
+				<% @teachers.each do |teacher| %>
+
+					<tr>
+						<td> <%= teacher.user_name %> </td>
+						<td> <%= teacher.email %> </td>
+						<td> <%= teacher.created_at %> </td>
+						<td> <%= link_to :show, teacher_path(teacher) %> </td>
+						<td> <%= link_to :edit, edit_teacher_path(teacher) %> </td>
+						<td> <%= link_to :delete, teacher, method: :delete, data: {confirm: "Are you sure?"} %> </td>
+					</tr>
+
+				<% end %>
+			<% end %>
+		</tbody>
+</table>
+<br>
+<%= link_to :new, new_teacher_path %>
