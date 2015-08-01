@@ -3,6 +3,7 @@
 <p>
 	<strong><%= :id %>: </strong>
 	<%= @teacher.id %>
+</p>
 <p>
 	<strong><%= :full_name %>: </strong>
 	<%= @teacher.full_name %>
@@ -23,7 +24,6 @@
 	<strong><%= :created_at %>: </strong>
 	<%= @teacher.created_at %>
 </p>
-</p>
 <p>
 	<strong><%= :updated_at %>: </strong>
 	<%= @teacher.updated_at %>
@@ -31,4 +31,3 @@
 
 <%= link_to :edit, edit_teacher_path %>
 <%= link_to :back, teachers_path %>
-<%= link_to :delete, @teacher.destroy %>
