@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :students
   resources :teachers
+  resources :categorys
+  resources :courses
 
   get '/about', to: 'welcome#about'
   get '/contact', to: 'welcome#contact'

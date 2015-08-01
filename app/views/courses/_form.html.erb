@@ -1,0 +1,16 @@
+<%= form_for @teacher do |f| %>
+	<%= f.label :name %> <br>
+	<%= f.text_field :name %>
+	<br>
+	<%= f.label :workload %> <br>
+	<%= f.text_field :workload %>
+	<br>
+	<%= f.label :value %> <br>
+	<%= f.text_field :value %>
+	<br>
+	<%= f.label :description %> <br>
+	<%= f.text_field :description %>
+	<br>
+
+	<%= f.submit %>
+<% end %>

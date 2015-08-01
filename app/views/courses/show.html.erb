@@ -1,0 +1,33 @@
+<h2><%= @course.name %> </h2>
+
+<p>
+	<strong><%= :id %>: </strong>
+	<%= @course.id %>
+</p>
+<p>
+	<strong><%= :name %>: </strong>
+	<%= @course.name %>
+</p>
+<p>
+	<strong><%= :workload %>: </strong>
+	<%= @course.workload %>
+</p>
+<p>
+	<strong><%= :value %>: </strong>
+	<%= @course.value %>
+</p>
+<p>
+	<strong><%= :description %>: </strong>
+	<%= @course.value %>
+</p>
+<p>
+	<strong><%= :created_at %>: </strong>
+	<%= @teacher.created_at %>
+</p>
+<p>
+	<strong><%= :updated_at %>: </strong>
+	<%= @course.updated_at %>
+</p>
+
+<%= link_to :edit, edit_course_path %>
+<%= link_to :back, courses_path %>
