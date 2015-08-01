@@ -1,3 +1,4 @@
+
 class TeachersController < ApplicationController
 	def index
 		@teachers = Teacher.all
@@ -43,6 +44,6 @@ class TeachersController < ApplicationController
 	private
 
 	def teacher_params
-		params.require(:teacher).permit(:full_name, :user_name, :email, :password)
+		params.require(:teacher).permit(:full_name, :user_name, :email, :password, :password_confirmation)
 	end
 end
