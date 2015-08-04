@@ -1,6 +1,9 @@
-class CategorysController < ApplicationController
+class CategoriesController < ApplicationController
+	
+	before_action :set_category, :only => [:show,:edit,:update,:destroy]
+
 	def index
-		@categorys = Category.all
+		@categories = Category.all
 	end
 
 	def new
@@ -8,24 +11,21 @@ class CategorysController < ApplicationController
 	end
 
 	def show
-		@category = Category.find(params[:id])
 	end
 
 	def edit
-		@category = Category.find(params[:id])
 	end
 
 	def create
 		@category = Category.new(category_params)
 		if @category.save
-			redirect_to categorys_path, notice: "Category #{@category.full_name} successfully created!"
+			redirect_to categories_path, notice: "Category #{@category.name} successfully created!"
 		else
 			render "new"
 		end
 	end
 
 	def update
-		@category = Category.find(params[:id])
 		if @category.update(category_params)
 			redirect_to @category, notice: "Category has been updated successfully!"
 		else
@@ -34,15 +34,17 @@ class CategorysController < ApplicationController
 	end
 
 	def destroy
-		@category = Category.find(params[:id])
 		@category.destroy
 
-		redirect_to categorys_path, notice: "Category #{@category.full_name} deleted successfully!"
+		redirect_to categories_path, notice: "Category #{@category.name} deleted successfully!"
 	end
 
 	private
+	def set_category
+		@category = Category.find(params[:id])		
+	end
 
-	def teacher_params
+	def category_params
 		params.require(:category).permit(:name, :description)
 	end
 end

@@ -1,4 +1,7 @@
 class TeachersController < ApplicationController
+
+	before_action :set_teacher, :only => [:show,:edit,:update,:destroy]
+
 	def index
 		@teachers = Teacher.all
 	end
@@ -8,11 +11,9 @@ class TeachersController < ApplicationController
 	end
 
 	def show
-		@teacher = Teacher.find(params[:id])
 	end
 
 	def edit
-		@teacher = Teacher.find(params[:id])
 	end
 
 	def create
@@ -25,7 +26,6 @@ class TeachersController < ApplicationController
 	end
 
 	def update
-		@teacher = Teacher.find(params[:id])
 		if @teacher.update(teacher_params)
 			redirect_to @teacher, notice: "Teacher has been updated successfully!"
 		else
@@ -34,7 +34,6 @@ class TeachersController < ApplicationController
 	end
 
 	def destroy
-		@teacher = Teacher.find(params[:id])
 		@teacher.destroy
 
 		redirect_to teachers_path, notice: "Teacher #{@teacher.full_name} deleted successfully!"
@@ -42,6 +41,9 @@ class TeachersController < ApplicationController
 
 	private
 
+	def set_teacher
+		@teacher = Teacher.find(params[:id])		
+	end
 	def teacher_params
 		params.require(:teacher).permit(:full_name, :user_name, :email, :password, :password_confirmation)
 	end

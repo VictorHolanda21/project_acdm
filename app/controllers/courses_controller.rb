@@ -1,4 +1,7 @@
 class CoursesController < ApplicationController
+
+	before_action :set_course, :only => [:show,:edit,:update,:destroy]
+
 	def index
 		@courses = Course.all
 	end
@@ -8,11 +11,9 @@ class CoursesController < ApplicationController
 	end
 
 	def show
-		@course = Course.find(params[:id])
 	end
 
 	def edit
-		@course = Course.find(params[:id])
 	end
 
 	def create
@@ -25,7 +26,6 @@ class CoursesController < ApplicationController
 	end
 
 	def update
-		@course = Course.find(params[:id])
 		if @course.update(course_params)
 			redirect_to @courses, notice: "Course has been updated successfully!"
 		else
@@ -34,13 +34,16 @@ class CoursesController < ApplicationController
 	end
 
 	def destroy
-		@course = Course.find(params[:id])
 		@course.destroy
 
 		redirect_to courses_path, notice: "Course #{@course.name} deleted successfully!"
 	end
 
 	private
+
+	def set_course
+		@couse = Course.find(params[:id])		
+	end
 
 	def course_params
 		params.require(:course).permit(:name, :workload, :value, :description)

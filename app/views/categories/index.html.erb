@@ -8,18 +8,18 @@
 	</tr>
 
 		<tbody>
-			<% if @categorys.count == 0 %>
-				<p>Not Registered Categorys</p>
+			<% if @categories.count == 0 %>
+				<p>Not Registered Categories</p>
 			<% else %>
-				<h2>There is <% @categorys.size %> categorys registered</h2>
+				<h2>There is <% @categories.size %> categories registered</h2>
 		
-				<% @categorys.each do |category| %>
+				<% @categories.each do |category| %>
 
 					<tr>
 						<td> <%= category.name %> </td>
 						<td> <%= category.description %> </td>
-						<td> <%= teacher.created_at %> </td>
-						<td> <%= link_to :show, category_path(teacher) %> </td>
+						<td> <%= category.created_at %> </td>
+						<td> <%= link_to :show, category_path(category) %> </td>
 						<td> <%= link_to :edit, edit_category_path(category) %> </td>
 						<td> <%= link_to :delete, category, method: :delete, data: {confirm: "Are you sure?"} %> </td>
 					</tr>
@@ -29,4 +29,4 @@
 		</tbody>
 </table>
 <br>
-<%= link_to :new, new_category_path %>
+<%= link_to :New, new_category_path %>

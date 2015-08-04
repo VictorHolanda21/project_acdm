@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :students
   resources :teachers
-  resources :categorys
+  resources :categories
   resources :courses
 
   get '/about', to: 'welcome#about'
