@@ -1,6 +1,6 @@
-class CreateCouses < ActiveRecord::Migration
+class CreateCourses < ActiveRecord::Migration
   def change
-    create_table :couses do |t|
+    create_table :courses do |t|
       t.string :name
       t.integer :workload
       t.integer :value
