@@ -14,10 +14,20 @@
 <body>
 	<div class="container-fluid">
 
+	<% if notice %>
+		<div class="alert alert-success fade in">
+			<strong>
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<p><%= notice %></p>
+			</strong>
+		</div>
+	<% end %>
+
 	<%= render 'layouts/partials/header' %>
 	<hr>
 	<!-- main -->
 		<div class="main container">
+	
 	<%= yield %>
 
 		</div>
