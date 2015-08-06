@@ -14,24 +14,24 @@
 
 	<tbody>
 		
-			<% if @students.count == 0 %>
-				<tr>
-					<td colspan="6" class="danger">
-						<p class="text-center text-default"><strong> Você não possui alunos cadastrados.</strong></p>
-					</td>
-				</tr>
-			<% end %>		
+		<% if @students.count == 0 %>
+			<tr>
+				<td colspan="6" class="danger">
+					<p class="text-center text-default"><strong> Você não possui alunos cadastrados.</strong></p>
+				</td>
+			</tr>
+		<% end %>		
 
-			<% @students.each do |student| %>
-				<tr>
-					<td>#<%= student.id %></td>
-					<td><%= student.user_name %></td>
-					<td><%= student.email %></td>
-					<td><%= student.created_at %></td>
+		<% @students.each do |student| %>
+			<tr>
+				<td>#<%= student.id %></td>
+				<td><%= student.user_name %></td>
+				<td><%= student.email %></td>
+				<td><%= student.created_at %></td>
 					<td>
-						<%= link_to :show, student_path(student), :class => "btn btn-info"  %>
-						<%= link_to :edit, edit_student_path(student), :class => "btn btn-warning" %>
-						<%= link_to :delete, student, method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-danger" %>
+					<%= link_to :show, student_path(student), :class => "btn btn-info"  %>
+					<%= link_to :edit, edit_student_path(student), :class => "btn btn-warning" %>
+					<%= link_to :delete, student, method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-danger" %>
 					</td>
 				</tr>
 			<% end %>

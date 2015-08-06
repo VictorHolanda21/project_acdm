@@ -1,25 +1,18 @@
-<h1>Show Category:</h1>
-<p> 
-	<strong><%= :id %>: </strong>
-	<%= @category.id %>
-</p>
-<p> 
-	<strong><%= :name %>: </strong>
-	<%= @category.name %>
-</p>
-<p> 
-	<strong><%= :description %>: </strong>
-	<%= @category.description %>
-</p>
-<p> 
-	<strong><%= :created_at %>: </strong>
-	<%= @category.created_at %>
-</p>
-<p> 
-	<strong><%= :updated_at %>: </strong>
-	<%= @category.updated_at %>
-</p>
+<h1 class="well"><strong><%= @category.name %></strong></h1>
 
+<%= form_for @category do |f| %>
 
-<%= link_to :Back, categories_path %>
-<%= link_to :Edit, edit_category_path %>
+	<div class="form-group">
+		<%= f.label :name%> <br>
+		<%= f.text_field :name, :placeholder => :name, :class => "form-control", disabled: true %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :description %> <br>
+		<%= f.text_field :description, :placeholder => :description, :class => "form-control", disacled: true %>
+	</div>
+<% end %>
+
+<%= link_to :Edit, edit_category_path, :class => "btn btn-warning btn-lg" %>
+
+<%= link_to :Back, categories_path, :class => "btn btn-danger btn-lg" %>
