@@ -1,10 +1,30 @@
-<%= form_for @category do |f| %>
-	<%= f.label :name %> <br>
-	<%= f.text_field :name %>
-	<br>
-	<%= f.label :description %> <br>
-	<%= f.text_field :description %>
-	<br>
+<% if @category.erros.any? %>
+	<div class="alert panel panel-danger danger">
+		<div class="panel-heanding">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			Infelizmente não foi possível salvar Categoria. Pois o formulário possui os seguintes erros:
+		</div>
+		<div class="panel-body">
+			<ul>
+				<% @category.erros.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+<% end %>
 	
-	<%= f.submit %>
+<%= form_for @category do |f| %>
+	<div class="form-group">
+		<%= f.label :name %> <br>
+		<%= f.text_field :name, :class => "form-control" %>
+	</div>
+	<br>
+	<div class="form-group">
+	<%= f.label :description %> <br>
+	<%= f.text_field :description, :class => "form-control" %>
+	</div>
+	<br>
+	<%= f.submit :save, :class => "btn btn-success btn-lg" %>
+	<%= link_to :Back, categories_path, :class => "btn btn-danger btn-lg btn-right" %>
 <% end %>
