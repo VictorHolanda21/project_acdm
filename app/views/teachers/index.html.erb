@@ -1,44 +1,45 @@
 <div class="page-header">
-  <h1>Professor</h1>
+	<h1>Teacher</h1>
 </div>
- <p class="text-right"><strong>Total:</strong> <%= @teachers.size %></p>
+	<p class="text-right"><strong>Total Teachers:</strong> <%= @teachers.size %></p>
 
 <table class="table table-hover table-condensed table-striped">
 	<thead>
-		<th>Id</th>
-		<th>Teacher</th>
-		<th>Email</th>
-
-		<th>Created at</th>
-		<th colspan="3">Action</th>
+		<tr>
+			<th>Id</th>
+			<th>Teacher</th>
+			<th>Email</th>
+			<th>Created at</th>
+			<th colspan="3">Action</th>
+		</tr>
 	</thead>
-		<tbody>
+	
+	<tbody>
+	
+		<% if @teachers.count == 0 %>
+			<tr>
+				<td colspan="6" class="danger">
+					<p class="text-center text-default"><strong> No Teachers Registered.</strong></p>
+				</td>
+			</tr>
+		<% end %>	
 
-			<% if @teachers.count == 0 %>
-				<tr>
-					<td colspan="6" class="danger">
-						<p class="text-center text-default"><strong> Not Registered Teachers.</strong></p>
-					</td>
-				</tr>
-			<% end %>	
-
-		
-			<% @teachers.each do |teacher| %>
-
-				<tr>
-					<td>#<%= teacher.id %> </td>
-					<td> <%= teacher.user_name %> </td>
-					<td> <%= teacher.email %> </td>
-					<td> <%= teacher.created_at %> </td>
-					<td> <%= link_to :show, teacher_path(teacher), :class => "btn btn-info"  %>
-					<%= link_to :edit, edit_teacher_path(teacher), :class => "btn btn-warning" %>
-					<%= link_to :delete, teacher, method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-danger"  %> </td>
-				</tr>
-			<% end %>
-		</tbody>
+		<% @teachers.each do |teacher| %>
+			<tr>
+				<td>#<%= teacher.id %> </td>
+				<td> <%= teacher.user_name %> </td>
+				<td> <%= teacher.email %> </td>
+				<td> <%= teacher.created_at %> </td>
+				<td> 
+					<%= link_to :Show, teacher_path(teacher), :class => "btn btn-info"  %>
+					<%= link_to :Edit, edit_teacher_path(teacher), :class => "btn btn-warning" %>
+					<%= link_to :Delete, teacher, method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-danger"  %> 
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <div class="well clearfix">
-	<%= link_to :new, new_teacher_path, :class => "btn btn-success btn-lg pull-right" %>
+	<%= link_to :New, new_teacher_path, :class => "btn btn-success btn-lg pull-right" %>
 </div>
-

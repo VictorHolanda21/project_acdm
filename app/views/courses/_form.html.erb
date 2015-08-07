@@ -2,13 +2,11 @@
 	<div class="alert panel panel-danger danger">
 		<div class="panel-heading">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			Infelizmente não foi possível
-			completar a ação pois o formulário
-			possui os seguintes erros:
+			It was not possible to complete the entries due to the following errors:
 		</div>
 		<div class="panel-body">
 			<ul>
-				<% @course.erros.name.each do |message| %>
+				<% @course.erros.full_messages.each do |message| %>
 					<li><%= message %></li>
 				<% end %>
 			</ul>
@@ -37,7 +35,7 @@
 	<%= f.text_field :description, :placeholder => :description, :class => "form-control" %>
 	</div>
 
-	<%= f.submit :save, :class => "btn-sucess btn-lg" %>
+	<%= f.submit :Save, :class => "btn-sucess btn-lg" %>
 	<%= link_to :Back, courses_path, :class => "btn btn-danger btn-lg btn-tight" %>
 <% end %>
 <hr>

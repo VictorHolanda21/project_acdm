@@ -2,7 +2,7 @@
 	<div class="alert panel panel-danger danger">
 		<div class="panel-heading">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			Infelizmente não foi possível completar a ação pois o formulário possui os seguintes erros:
+			It was not possible to complete the entries due to the following errors:
 		</div>
 		<div class="panel-body">
 			<ul>
@@ -41,6 +41,7 @@
 		<%= f.label :password_confirmation %> <br>
 		<%= f.password_field :password_confirmation, :placeholder => :password_confirmation , :class => "form-control" %>
 	</div>
-	<%= f.submit :save, :class => 'btn btn-success btn-lg', data: { :toggle => "tooltip"}, :title => :save %>
-	<%= link_to :back, teachers_path, :class=> "btn btn-danger btn-lg btn-right" %>
+	
+	<%= f.submit :Save, :class => "btn btn-success btn-lg" %>
+	<%= link_to :Back, teachers_path, :class=> "btn btn-danger btn-lg btn-right" %>
 <% end %>

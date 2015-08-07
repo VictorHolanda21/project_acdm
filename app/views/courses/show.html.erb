@@ -1,33 +1,27 @@
-<h2><%= @course.name %> </h2>
+<h1 class="well"><strong><%= @course.name %></strong></h1>
 
-<p>
-	<strong><%= :id %>: </strong>
-	<%= @course.id %>
-</p>
-<p>
-	<strong><%= :name %>: </strong>
-	<%= @course.name %>
-</p>
-<p>
-	<strong><%= :workload %>: </strong>
-	<%= @course.workload %>
-</p>
-<p>
-	<strong><%= :value %>: </strong>
-	<%= @course.value %>
-</p>
-<p>
-	<strong><%= :description %>: </strong>
-	<%= @course.value %>
-</p>
-<p>
-	<strong><%= :created_at %>: </strong>
-	<%= @course.created_at %>
-</p>
-<p>
-	<strong><%= :updated_at %>: </strong>
-	<%= @course.updated_at %>
-</p>
+<%= form_for @student do |f| %>
 
-<%= link_to :Edit, edit_course_path %>
-<%= link_to :Back, courses_path %>
+	<div class="form-group">
+		<%= f.label :name %><br>
+		<%= f.text_field :name, :placeholder => :name, :class => "form-control", disacled: true %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :workload %><br>
+		<%= f.text_field :workload, :placeholder => :workload, :class => "form-control", disacled: true %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :value %><br>
+		<%= f.text_field :value, :placeholder => :value, :class => "form-control", disacled: true %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :description %><br>
+		<%= f.text_field :description, :placeholder => :description, :class => "form-control", disacled: true %>
+	</div>
+<% end %>
+
+<%= link_to :Edit, edit_course_path, :class => "btn btn-warning btn-lg" %>
+<%= link_to :Back, courses_path, :class => "btn btn-danger btn-lg" %>
