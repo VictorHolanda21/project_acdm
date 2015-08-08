@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
 
-	has_many :students
+	belongs_to :category
 
 	validates_presence_of :name, :workload, :value, :description
 	validates_uniqueness_of :name, :workload, :value, :description

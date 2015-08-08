@@ -39,6 +39,11 @@ class CategoriesController < ApplicationController
 		redirect_to categories_path, notice: "Category #{@category.name} deleted successfully!"
 	end
 
+	def course
+		@courses = @category.courses
+	end
+
+
 	private
 	def set_category
 		@category = Category.find(params[:id])		

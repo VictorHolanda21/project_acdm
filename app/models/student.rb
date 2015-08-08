@@ -1,6 +1,5 @@
 class Student < ActiveRecord::Base
 
-	belongs_to :course
 	delegate :name, to: :course, :prefix => "course"
 	delegate :description, to: :course, :prefix => "course"
 
