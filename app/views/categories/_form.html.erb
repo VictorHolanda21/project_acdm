@@ -1,12 +1,12 @@
-<% if @category.erros.any? %>
+<% if @category.errors.any? %>
 	<div class="alert panel panel-danger danger">
-		<div class="panel-heanding">
+		<div class="panel-heading">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			It was not possible to complete the entries due to the following errors:
 		</div>
 		<div class="panel-body">
 			<ul>
-				<% @category.erros.full_messages.each do |message| %>
+				<% @category.errors.full_messages.each do |message| %>
 					<li><%= message %></li>
 				<% end %>
 			</ul>
@@ -22,7 +22,7 @@
 	
 	<div class="form-group">
 	<%= f.label :description %> <br>
-	<%= f.text_field :description, :placeholder => :description, :class => "form-control" %>
+	<%= f.text_area :description, :placeholder => :description, :class => "form-control" %>
 	</div>
 	
 	<%= f.submit :save, :class => "btn btn-success btn-lg" %>

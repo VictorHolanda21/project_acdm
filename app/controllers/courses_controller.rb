@@ -8,12 +8,15 @@ class CoursesController < ApplicationController
 
 	def new
 		@course = Course.new
+		set_category
 	end
 
 	def show
+		set_category
 	end
 
 	def edit
+		@category = Category.all
 	end
 
 	def create
@@ -27,7 +30,7 @@ class CoursesController < ApplicationController
 
 	def update
 		if @course.update(course_params)
-			redirect_to @courses, notice: "Course has been updated successfully!"
+			redirect_to @course, notice: "Course has been updated successfully!"
 		else
 			render 'edit'
 		end
@@ -39,13 +42,21 @@ class CoursesController < ApplicationController
 		redirect_to courses_path, notice: "Course #{@course.name} deleted successfully!"
 	end
 
+
 	private
+	def set_category
+		if @course.category_id? 
+			@category = [@course.category]
+		else
+			@category = Category.all
+		end
+	end
 
 	def set_course
-		@couse = Course.find(params[:id])		
+		@course = Course.find(params[:id])		
 	end
 
 	def course_params
-		params.require(:course).permit(:name, :workload, :value, :description)
+		params.require(:course).permit(:name, :workload, :value, :description, :category_id)
 	end
 end

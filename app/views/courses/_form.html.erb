@@ -6,7 +6,7 @@
 		</div>
 		<div class="panel-body">
 			<ul>
-				<% @course.erros.full_messages.each do |message| %>
+				<% @course.errors.full_messages.each do |message| %>
 					<li><%= message %></li>
 				<% end %>
 			</ul>
@@ -15,27 +15,33 @@
 <% end %>
 
 <%= form_for @course do |f| %>
-	<div class ="form-group">
+
+	<div class ="form-group col-xs-8">
 		<%= f.label :name %> <br>
 		<%= f.text_field :name, :placeholder => :name, :class => "form-control" %>
 	</div>
 
-	<div class="form-group">
-	<%= f.label :workload %> <br>
-	<%= f.text_field :workload, :placeholder => :workload, :class => "form-control" %>
+	<div class="form-group col-xs-4">
+		<%= f.label :category %><br>
+		<%= select_tag "course[category_id]", options_from_collection_for_select(@category, "id", "name"), :class => "form-control" %>
 	</div>
 
-	<div class="form-group">
-	<%= f.label :value %> <br>
-	<%= f.text_field :value, :placeholder => :value, :class => "form-control" %>
+	<div class="form-group col-xs-6">
+		<%= f.label :workload %><br>
+		<%= f.number_field :workload, :placeholder => :workload, :class => "form-control" %>
 	</div>
 
-	<div class="form-group">
+	<div class="form-group col-xs-6">
+		<%= f.label :value %><br>
+		<%= f.number_field :value, :placeholder => :value, :class => "form-control" %>	
+	</div>
+
+	<div class="form-group col-xs-12">
 	<%= f.label :description %> <br>
 	<%= f.text_field :description, :placeholder => :description, :class => "form-control" %>
 	</div>
 
-	<%= f.submit :Save, :class => "btn-sucess btn-lg" %>
+	<%= f.submit :Save, :class => "btn btn-sucess btn-lg" %>
 	<%= link_to :Back, courses_path, :class => "btn btn-danger btn-lg btn-tight" %>
 <% end %>
 <hr>
