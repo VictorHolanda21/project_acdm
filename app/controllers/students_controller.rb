@@ -16,27 +16,28 @@ class StudentsController < ApplicationController
 	def edit
 	end
 
-	def update
-		if @student.update(student_params)
-			redirect_to students_path, notice: "Aluno #{@student.full_name} foi atualizado com sucesso!"
-		else
-			render 'edit'
-		end
-	end
 
 	def create
 		@student = Student.new(student_params)
 		if @student.save
-			redirect_to students_path, notice: "Aluno #{@student.full_name} foi criado com sucesso!"
+			redirect_to students_path, notice: "Student #{@student.full_name} successfully created!"
 		else
 			render 'new'
+		end
+	end
+
+	def update
+		if @student.update(student_params)
+			redirect_to students_path, notice: "Student #{@student.full_name} has been updated successfully!"
+		else
+			render 'edit'
 		end
 	end
 
 	def destroy
 		@student.destroy
 
-		redirect_to students_path, notice: "Aluno #{@student.full_name} foi deletado com sucesso!"
+		redirect_to students_path, notice: "Student #{@student.full_name} deleted successfully!"
 	end
 	private
 

@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
 
 	def update
 		if @category.update(category_params)
-			redirect_to @category, notice: "Category has been updated successfully!"
+			redirect_to categories_path, notice: "Category #{@category.name} has been updated successfully!"
 		else
 			render 'edit'
 		end
