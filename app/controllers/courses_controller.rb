@@ -9,6 +9,10 @@ class CoursesController < ApplicationController
 	def new
 		@course = Course.new
 		set_category
+
+		if set_category.count == 0
+			redirect_to categories_path, notice: "There must be registered at least one category. Sign a category! "
+		end
 	end
 
 	def show
@@ -30,7 +34,7 @@ class CoursesController < ApplicationController
 
 	def update
 		if @course.update(course_params)
-			redirect_to courses_path, notice: "Course #{@couse.name} has been updated successfully!"
+			redirect_to courses_path, notice: "Course #{@course.name} has been updated successfully!"
 		else
 			render 'edit'
 		end
