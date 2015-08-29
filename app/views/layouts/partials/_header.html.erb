@@ -11,13 +11,16 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to :Home, root_path %></li>
-		<li><%= link_to :About, about_path %></li>
-		<li><%= link_to :Students, students_path %></li>
-    <li><%= link_to :Teachers, teachers_path %></li>
-    <li><%= link_to :Courses, courses_path %></li>
-    <li><%= link_to :Categories, categories_path %></li>
-    <li><%= link_to :Contact, contact_path %></li>
-		<li><a href="#">Turma</a></li>
+    		<li><%= link_to :About, about_path %></li>
+    		<li><%= link_to :Students, students_path %></li>
+        <li><%= link_to :Teachers, teachers_path %></li>
+        <li><%= link_to :Courses, courses_path %></li>
+        <li><%= link_to :Categories, categories_path %></li>
+        <li><%= link_to :Contact, contact_path %></li>
+    		<li><a href="#">Turma</a></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <%end%>
       </ul>
     </div>
   </div>
