@@ -1,8 +1,9 @@
 class Course < ActiveRecord::Base
+	mount_uploader :course_img, CourseImgUploader
 
 	belongs_to :category
 
-	validates_presence_of :name, :workload, :value, :description, :category_id
+	validates_presence_of :name, :workload, :value, :description, :category_id, :course_img
 	validates_uniqueness_of :name, :workload, :value, :description
 	validates_length_of :description, maximum: 150
 	
