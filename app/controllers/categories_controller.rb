@@ -5,8 +5,7 @@ class CategoriesController < ApplicationController
 
 	def index
     if params[:search]
-      @categories = Category.where('name LIKE ?', "%#{params[:search]}%")
-      
+      @categories = Category.search(params[:search])
     else
       @categories = Category.all
     end

@@ -1,49 +1,29 @@
 <div id="myCarousel" class="carousel slide intro" data-ride="carousel">
   <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+  
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
 
-  <div class="carousel-inner" role="listbox">
-    <% @courses.each do |course| %>
-      <% c = course.id %>
-      <div class="item <%= "active" unless course.id > 1 %>">
-        <%= image_tag course.course_image_url(:large).to_s, :class=>"img-responsive" %>
-        <div class="container">
-          <div class="carousel-caption">
-            <h1><%= course.name %></h1>
-            <p></p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+    <div class="carousel-inner" role="listbox">
+      <% c = 1 %>
+      <% @courses.each do |course| %>
+        <div class="item <%= "active" unless c > 1 %>">
+          <%= image_tag course.course_img_url(:large).to_s, :class=>"img-responsive" %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1><%= course.name %></h1>
+              <p></p>
+              <p><%= link_to "Ver mais", course_path(course), :class => "btn btn-lg btn-primary" %></p>
+              <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p> -->
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-
-<!--     <div class="item">
-      <img class="second-slide" src="" alt="Second slide">
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>Another example headline.</h1>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-        </div>
-      </div>
-    </div> -->
-
-<!--     <div class="item">
-      <img class="third-slide" src="" alt="Third slide">
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>One more for good measure.</h1>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-        </div>
-      </div>
-    </div> -->
-
-  </div>
+        <% c += 1 %>
+      <% end %>
+    </div>
 
   <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -53,4 +33,4 @@
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div><!-- /.carousel
+</div>
