@@ -10,4 +10,8 @@ class Course < ActiveRecord::Base
 	validates_numericality_of :category_id, greater_than: 0
 	validates_numericality_of :workload, greater_than: 0
 	validates_numericality_of :value, greater_than_or_equal_to: 0
+
+	def self.search(query)
+		where('name LIKE ?', "%#{query}%")
+	end
 end

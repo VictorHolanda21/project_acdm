@@ -9,8 +9,4 @@ class Category < ActiveRecord::Base
 	def self.search(query)
 		where('name LIKE ?', "%#{query}%")
 	end
-
-	def self.options
-		self.all.map { |category| [category.name, category.id] }
-	end
 end

@@ -4,9 +4,13 @@ class CoursesController < ApplicationController
 	before_action :set_course, :only => [:show,:edit,:update,:destroy]
 
 	def index
-		@courses = Course.all
+    if params[:search]
+      @courses = Course.search(params[:search])
+    else
+      @courses = Course.all
+    end
 	end
-
+	
 	def new
 		if Category.count == 0
 			redirect_to categories_path, notice: "There must be registered at least one category. Sign a category! "

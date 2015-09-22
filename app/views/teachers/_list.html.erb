@@ -1,0 +1,36 @@
+<table class="table table-hover table-condensed table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Teacher</th>
+				<th>Email</th>
+				<th>Created at</th>
+				<th colspan="3">Action</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+		
+			<% if @teachers.count == 0 %>
+				<tr>
+					<td colspan="6" class="danger">
+						<p class="text-center text-default"><strong> No Teachers Registered.</strong></p>
+					</td>
+				</tr>
+			<% end %>	
+
+			<% @teachers.each do |teacher| %>
+				<tr>
+					<td>#<%= teacher.id %> </td>
+					<td> <%= teacher.user_name %> </td>
+					<td> <%= teacher.email %> </td>
+					<td> <%= teacher.created_at %> </td>
+					<td> 
+						<%= link_to :Show, teacher_path(teacher), :class => "btn btn-info"  %>
+						<%= link_to :Edit, edit_teacher_path(teacher), :class => "btn btn-warning" %>
+						<%= link_to :Delete, teacher, method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-danger"  %> 
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>

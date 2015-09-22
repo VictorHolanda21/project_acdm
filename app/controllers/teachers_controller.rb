@@ -4,7 +4,11 @@ class TeachersController < ApplicationController
 	before_action :set_teacher, :only => [:show,:edit,:update,:destroy]
 
 	def index
-		@teachers = Teacher.all
+    if params[:search]
+      @teachers = Teacher.search(params[:search])
+    else
+      @teachers = Teacher.all
+    end
 	end
 
 	def new
