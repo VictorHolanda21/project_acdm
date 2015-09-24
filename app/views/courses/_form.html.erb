@@ -16,14 +16,24 @@
 
 <%= form_for @course do |f| %>
 
+	<div class = "form-group">
+		<%= image_tag @course.course_img_url(:large).to_s, :class=>"img-responsive" if @course.course_img?%>
+		<%= f.file_field :course_img, :class => "" %>
+
+<!-- 	    <label>
+	      <%#= f.check_box :remove_course_img! %>
+	      Remove Image
+	    </label> -->
+	</div>
+
 	<div class ="form-group col-xs-8">
 		<%= f.label :name %> <br>
 		<%= f.text_field :name, :placeholder => :name, :class => "form-control" %>
 	</div>
 
-	<div class="form-group col-xs-4">
+	<div class="form-group col-xs-4" id="select_cat">
 		<%= f.label :category %><br>
-		<%= select_tag "course[category_id]", options_from_collection_for_select(@category, "id", "name"), :class => "form-control" %>
+		<%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Select a category"}, {:class => "form-control"} %>
 	</div>
 
 	<div class="form-group col-xs-6">
@@ -33,7 +43,7 @@
 
 	<div class="form-group col-xs-6">
 		<%= f.label :value %><br>
-		<%= f.number_field :value, :placeholder => :value, :class => "form-control" %>	
+		<%= f.number_field :value, min:"0", max:"9999", step:"0.01", size:"4", :class=> "form-control" %>
 	</div>
 
 	<div class="form-group col-xs-12">
@@ -45,3 +55,11 @@
 	<%= link_to :Back, courses_path, :class => "btn btn-danger btn-lg btn-tight" %>
 <% end %>
 <hr>
+
+<script type="text/javascript">
+$(documet).ready(function(){
+
+});
+
+
+</script>

@@ -51,3 +51,8 @@ gem 'therubyracer'
 gem 'pry-rails', group: :development
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+
+# antes de rodar bundle install pra gem rmagick rodar o comando
+# sudo apt-get install libmagickwand-dev imagemagick
+gem 'carrierwave'
+gem 'rmagick'

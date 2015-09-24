@@ -7,5 +7,9 @@ class Student < ActiveRecord::Base
 	validates_uniqueness_of :user_name, :email 
 	validates_confirmation_of :password
 	validates_length_of :password, minimum: 6
+
+	def self.search(query)
+		where('user_name LIKE ?', "%#{query}%")
+	end
 	
 end

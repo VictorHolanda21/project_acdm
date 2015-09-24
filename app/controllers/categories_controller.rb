@@ -1,9 +1,14 @@
 class CategoriesController < ApplicationController
+	before_filter :authenticate_user!
 	
 	before_action :set_category, :only => [:show,:edit,:update,:destroy]
 
 	def index
-		@categories = Category.all
+    if params[:search]
+      @categories = Category.search(params[:search])
+    else
+      @categories = Category.all
+    end
 	end
 
 	def new

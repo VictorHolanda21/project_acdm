@@ -1,9 +1,14 @@
 class StudentsController < ApplicationController
+	before_filter :authenticate_user!
 
 	before_action :set_student, :only => [:show,:edit,:update,:destroy]
 
 	def index
-		@students = Student.all
+    if params[:search]
+      @students = Student.search(params[:search])
+    else
+      @students = Student.all
+    end
 	end
 
 	def new

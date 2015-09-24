@@ -3,7 +3,7 @@ class CreateCourses < ActiveRecord::Migration
     create_table :courses do |t|
       t.string :name
       t.integer :workload
-      t.integer :value
+      t.decimal :value
       t.text :description
 
       t.timestamps null: false

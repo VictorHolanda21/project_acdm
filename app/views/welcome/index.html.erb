@@ -1,2 +1,9 @@
-<h1 class="well">index</h1>
-<hr>
+<section id="welcome-index">
+ 	<% if Course.count > 1%>
+		<%= render 'carousel' %>
+	<% else %>
+		<div class="page-header container">
+			<h1>INDEX</h1>
+		</div>
+	<% end %>
+</section>

@@ -12,22 +12,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 	<%= render 'layouts/partials/header' %>
-	<div class="container-fluid">
 	<hr>
 	<!-- main -->
-		<div class="main container">
-			<% if notice %>
-				<div class="alert alert-success fade in">
-					<strong>
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<p><%= notice %></p>
-					</strong>
-				</div>
-			<% end %>
+		<div class="main">
+			<div class="myAlert">
+				<% if notice %>
+					<div class="alert alert-success fade in">
+						<strong>
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<p><%= notice %></p>
+						</strong>
+					</div>
+				<% end %>
+			</div>
 	
-	<%= yield %>
+			<%= yield %>
+
 		</div>
-	</div>
+
 </body>
 </html>

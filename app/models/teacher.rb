@@ -5,4 +5,8 @@ class Teacher < ActiveRecord::Base
 	validates_confirmation_of :password
 	validates_length_of :password, minimum: 6
 	
+	def self.search(query)
+		where('user_name LIKE ?', "%#{query}%")
+	end
+
 end

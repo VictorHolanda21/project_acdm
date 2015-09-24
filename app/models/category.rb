@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
 	validates_uniqueness_of :name, :description
 	validates_length_of :description, maximum: 150
 
-	def self.options
-		self.all.map { |category| [category.name, category.id] }
+	def self.search(query)
+		where('name LIKE ?', "%#{query}%")
 	end
 end
