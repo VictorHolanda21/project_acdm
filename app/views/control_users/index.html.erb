@@ -1,0 +1,28 @@
+<h1>List of Users</h1>
+
+<p><%= @users.size %> Autores cadastrados</p> 
+
+<br />
+
+
+<table>
+   <thead>
+	<tr>
+		<th>Email</th>
+		<th>Role</th>
+	</tr>
+   </thead>
+   
+   <tbody>
+	<% @users.each do |user| %>
+		<tr>
+			<td><%= user.email %></td>
+			<td><%= user.role %></td>
+		</tr>
+   </tbody>
+	<% end %>
+</table>
+
+		<td>
+			<%= link_to "New User", new_user_registration_path %>
+		</td>

@@ -6,6 +6,8 @@ gem 'rails', '4.2.1'
 
 gem 'devise'
 
+gem 'pundit'
+
 # gem 'declarative_authorization'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

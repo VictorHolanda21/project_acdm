@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'control_users/index'
+
   devise_for :users
   root 'welcome#index'
 
