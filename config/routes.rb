@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :administrators
   get 'control_users/index'
 
   devise_for :users

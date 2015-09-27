@@ -1,0 +1,54 @@
+<% if @administrator.errors.any? %>
+  <div class="alert panel panel-danger danger">
+    <div class="panel-heading">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      It was not possible to complete the entries due to the following errors:
+    </div>
+    <div class="panel-body">
+      <ul>
+        <% @administrator.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<%= form_for @administrator do |f| %>
+
+  <div class="form-group">
+    <%= f.label :full_name %> <br>
+    <%= f.text_field :full_name, :placeholder => :full_name, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :user_name %> <br>
+    <%= f.text_field :user_name, :placeholder => :user_name , :class => "form-control" %>
+  </div>
+
+  <%= f.fields_for :user do |ff| %>
+
+    <div class="form-group">
+      <%= ff.label :email %> <br>
+      <%= ff.email_field :email, :placeholder => :email , :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :password %> <br>
+          <% if @minimum_password_length %>
+                 <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+      <%= ff.password_field :password, :placeholder => :password , :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label :password_confirmation %> <br>
+      <%= ff.password_field :password_confirmation, :placeholder => :password_confirmation , :class => "form-control" %>
+    </div>
+    
+  <% end %>
+
+  <%= f.submit :Save, :class => "btn btn-success btn-lg" %>
+  <%= link_to :Back, administrators_path, :class=> "btn btn-danger btn-lg btn-right" %>
+
+<% end %>

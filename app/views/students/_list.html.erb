@@ -23,7 +23,7 @@
 			<tr>
 				<td><%= student.id %></td>
 				<td><%= student.user_name %></td>
-				<td><%= student.email %></td>
+				<td><%= student.user.email %></td>
 				<td><%= student.created_at %></td>
 				<td>
 					<%= link_to :Show, student_path(student), :class => "btn btn-info"  %>

@@ -1,8 +1,15 @@
-<h1>List of Users</h1>
+<p><h1>List of Users</h1></p>
 
-<p><%= @users.size %> Autores cadastrados</p> 
+<p>
+	<td>
+		<%= link_to "New Administrator", new_administrator_path %>
+		<%= link_to "New Student", new_student_path %>
+		<%= link_to "New Teacher", new_teacher_path %>
+	</td>
+</p>
 
-<br />
+
+<p><%= @users.size %> Users Registered</p> 
 
 
 <table>
@@ -22,7 +29,3 @@
    </tbody>
 	<% end %>
 </table>
-
-		<td>
-			<%= link_to "New User", new_user_registration_path %>
-		</td>

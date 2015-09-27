@@ -6,4 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.create(name: "user", email: "user@user.com", password: 123456789)
+administrator = Administrator.create(full_name: "Admin Test", user_name: "AT", :user_attributes => {email: "at@admin.com", password: "123456", role: 0} )
+student = Student.create(full_name: "Student Test", user_name: "ST", :user_attributes => {email: "st@student.com", password: "123456", role: 1} )
+teacher = Teacher.create(full_name: "Teacher Test", user_name: "TT", :user_attributes => {email: "tt@teacher.com", password: "123456", role: 2} )

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926121933) do
+ActiveRecord::Schema.define(version: 20150927183642) do
+
+  create_table "administrators", force: :cascade do |t|
+    t.string   "full_name"
+    t.string   "user_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -36,8 +43,6 @@ ActiveRecord::Schema.define(version: 20150926121933) do
   create_table "students", force: :cascade do |t|
     t.string   "full_name"
     t.string   "user_name"
-    t.string   "email"
-    t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,8 +50,6 @@ ActiveRecord::Schema.define(version: 20150926121933) do
   create_table "teachers", force: :cascade do |t|
     t.string   "full_name"
     t.string   "user_name"
-    t.string   "email"
-    t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,10 +68,16 @@ ActiveRecord::Schema.define(version: 20150926121933) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "role",                   default: 0
+    t.integer  "role"
+    t.integer  "administrator_id"
+    t.integer  "teacher_id"
+    t.integer  "student_id"
   end
 
+  add_index "users", ["administrator_id"], name: "index_users_on_administrator_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["student_id"], name: "index_users_on_student_id"
+  add_index "users", ["teacher_id"], name: "index_users_on_teacher_id"
 
 end

@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
 
-  enum role: [:admin, :student, :teacher]
+  belongs_to :administrator
+  belongs_to :student
+  belongs_to :teacher
+
+  enum role: [:administrator, :student, :teacher]
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

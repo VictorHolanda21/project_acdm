@@ -13,6 +13,7 @@ class TeachersController < ApplicationController
 
 	def new
 		@teacher = Teacher.new
+		@teacher.build_user
 	end
 
 	def show
@@ -39,6 +40,7 @@ class TeachersController < ApplicationController
 	end
 
 	def destroy
+		@teacher.user.destroy
 		@teacher.destroy
 
 		redirect_to teachers_path, notice: "Teacher #{@teacher.full_name} deleted successfully!"
@@ -50,6 +52,6 @@ class TeachersController < ApplicationController
 		@teacher = Teacher.find(params[:id])		
 	end
 	def teacher_params
-		params.require(:teacher).permit(:full_name, :user_name, :email, :password, :password_confirmation)
+		params.require(:teacher).permit(:full_name, :user_name, :user_attributes => [:email, :password])
 	end
 end

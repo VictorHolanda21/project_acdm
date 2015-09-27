@@ -21,10 +21,10 @@
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
+              <li><%= link_to :Administrator, administrators_path %></li>
               <li><%= link_to :Students, students_path %></li>
               <li><%= link_to :Teachers, teachers_path %></li>
               <li><%= link_to :ControlUsers, control_users_index_path %></li>
-              <li><a href="#">Administrador </a></li>
             </ul>
           </li>
           <li class="dropdown" id="nav-school">

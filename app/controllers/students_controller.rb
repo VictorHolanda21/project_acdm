@@ -13,6 +13,7 @@ class StudentsController < ApplicationController
 
 	def new
 		@student = Student.new
+		@student.build_user
 	end
 
 	def show
@@ -40,6 +41,7 @@ class StudentsController < ApplicationController
 	end
 
 	def destroy
+		@student.user.destroy
 		@student.destroy
 
 		redirect_to students_path, notice: "Student #{@student.full_name} deleted successfully!"
@@ -51,6 +53,7 @@ class StudentsController < ApplicationController
 	end
 
 	def student_params
-		params.require(:student).permit(:full_name, :user_name, :email, :password, :password_confirmation)
+		params.require(:student).permit(:full_name, :user_name, :user_attributes => [:email, :password])
 	end
+
 end
