@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :administrators
   get 'control_users/index'
+  resources :control_users
 
   devise_for :users
   root 'welcome#index'
 
+  resources :administrators
   resources :students
   resources :teachers
   resources :categories

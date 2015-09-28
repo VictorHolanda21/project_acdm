@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   enum role: [:administrator, :student, :teacher]
 
+scope :role, ->(role) { where role: role }
+  scope :query, ->(query) { where('email LIKE ?', "%#{query}%") }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

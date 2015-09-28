@@ -3,12 +3,15 @@ class TeachersController < ApplicationController
 	
 	before_action :set_teacher, :only => [:show,:edit,:update,:destroy]
 
+	# before_filter :verify_authorize, :except => :index
+
 	def index
     if params[:search]
       @teachers = Teacher.search(params[:search])
     else
       @teachers = Teacher.all
     end
+    authorize @teachers
 	end
 
 	def new
@@ -17,6 +20,7 @@ class TeachersController < ApplicationController
 	end
 
 	def show
+		# authorize @teacher, :show?
 	end
 
 	def edit
@@ -51,7 +55,12 @@ class TeachersController < ApplicationController
 	def set_teacher
 		@teacher = Teacher.find(params[:id])		
 	end
+
 	def teacher_params
 		params.require(:teacher).permit(:full_name, :user_name, :user_attributes => [:email, :password])
 	end
+
+  def verify_authorize
+    authorize @teacher
+  end
 end

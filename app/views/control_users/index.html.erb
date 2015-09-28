@@ -1,31 +1,56 @@
-<p><h1>List of Users</h1></p>
+<section id="controluser-index" class="container">
+<div class="page-header">
+	<h1>Control User</h1>
+</div>
 
-<p>
-	<td>
-		<%= link_to "New Administrator", new_administrator_path %>
-		<%= link_to "New Student", new_student_path %>
-		<%= link_to "New Teacher", new_teacher_path %>
-	</td>
-</p>
+	<%= form_tag control_users_path, :method=>"GET", :remote => true  do  %>
 
-
-<p><%= @users.size %> Users Registered</p> 
+    <div class="form-group input-group">
+    	<%= text_field_tag 'search', nil, :placeholder => 'Enter search term...', :class => "form-control" %>
 
 
-<table>
-   <thead>
-	<tr>
-		<th>Email</th>
-		<th>Role</th>
-	</tr>
-   </thead>
-   
-   <tbody>
-	<% @users.each do |user| %>
-		<tr>
-			<td><%= user.email %></td>
-			<td><%= user.role %></td>
-		</tr>
-   </tbody>
+      <span class="input-group-btn">
+      	<%= submit_tag "Pesquisar", :class=>"btn btn-default" %>
+      </span>
+    </div>
+
+    <div class="form-group">
+    	Filtar por: 
+	    <label class="checkbox-inline">
+	    	<%= check_box_tag :role, 0 %> <strong>Admin</strong>
+	    </label>
+
+	    <label class="checkbox-inline">
+	    	<%= check_box_tag :role, 1 %> <strong>Student</strong>
+	    </label>
+
+	    <label class="checkbox-inline">
+	    	<%= check_box_tag :role, 2 %> <strong>Teacher</strong>
+	    </label>
+    </div>
+
 	<% end %>
-</table>
+
+	<p class="text-right"><strong>Total users:</strong> <%= @users.size %></p>
+
+	<div id="controluser-list">
+		<%= render "list"%>
+	</div>
+
+	<div class="well clearfix">
+
+		<div class="pull-right">
+    <div class="btn-group">
+			<%= link_to "New Student", new_student_path, :class => "btn btn-success btn-lg pull-right" %>
+    </div>
+    <div class="btn-group">
+			<%= link_to "New Teacher", new_teacher_path, :class => "btn btn-success btn-lg pull-right" %>
+    </div>
+    <div class="btn-group">
+			<%= link_to "New Administrator", new_administrator_path, :class => "btn btn-success btn-lg pull-right" %>
+    </div>
+  </div>
+		
+	</div>
+
+</section>

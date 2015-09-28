@@ -21,7 +21,9 @@
 		<%= render "list"%>
 	</div>
 
-<div class="well clearfix">
-	<%= link_to :New, new_category_path, :class => "btn btn-success btn-lg pull-right" %>
-</div>
+	<% if !current_user.student? %>
+		<div class="well clearfix">
+			<%= link_to :New, new_category_path, :class => "btn btn-success btn-lg pull-right" %>
+		</div>
+	<% end %>
 </section>

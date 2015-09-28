@@ -1,9 +1,9 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :current_user, :model
 
-  def initialize(user, record)
-    @user = user
-    @record = record
+  def initialize(current_user, model)
+    @current_user = current_user
+    @user = model
   end
 
   def index?
@@ -11,7 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    scope.where(:id => user.id).exists?
   end
 
   def create?
@@ -35,14 +35,14 @@ class ApplicationPolicy
   end
 
   def scope
-    Pundit.policy_scope!(user, record.class)
+    Pundit.policy_scope!(current_user, user.class)
   end
 
   class Scope
-    attr_reader :user, :scope
+    attr_reader :current_user, :scope
 
-    def initialize(user, scope)
-      @user = user
+    def initialize(current_user, scope)
+      @current_user = current_user
       @scope = scope
     end
 

@@ -1,0 +1,36 @@
+<table class="table table-hover table-condensed table-striped">
+  <thead>
+    <tr>  
+      <th>ID</th>
+      <th>Administrator </th>
+      <th>Email </th>
+      <th>Created at</th>
+      <th colspan="3">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+    <% if @administrators.count == 0 %>
+      <tr>
+        <td colspan="6" class="danger">
+          <p class="text-center text-default"><strong> No administrator registered.</strong></p>
+        </td>
+      </tr>
+    <% end %>   
+
+    <% @administrators.each do |administrator| %>
+      <tr>
+        <td><%= administrator.id %></td>
+        <td><%= administrator.user_name %></td>
+        <td><%= administrator.user.email %></td>
+        <td><%= administrator.created_at %></td>
+        <td>
+          <%= link_to :Show, administrator_path(administrator), :class => "btn btn-info"  %>
+          <%= link_to :Edit, edit_administrator_path(administrator), :class => "btn btn-warning" %>
+          <%= link_to :Delete, administrator, method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

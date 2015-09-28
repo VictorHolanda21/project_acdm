@@ -1,8 +1,32 @@
 class UserPolicy < ApplicationPolicy
   
   def index?
-  	user.administrator?  	
+  	@current_user.administrator?  	
   end
+
+  # def new?
+  # 	@current_user.administrator?  	
+  # end
+
+  # def show?
+  # 	@current_user.administrator? || current_user === @user   	
+  # end
+
+  # def update?
+  # 	@current_user.administrator? || current_user === @user   	
+  # end  
+
+  # def edit?
+  # 	@current_user.administrator? || current_user === @user   	
+  # end  
+
+  # def create?
+  # 	@current_user.administrator?  	
+  # end
+
+  # def destroy?
+  # 	@current_user.administrator?  	
+  # end
 
   class Scope < Scope
     def resolve

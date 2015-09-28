@@ -1,0 +1,8 @@
+<li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.teacher.user_name %>
+  <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li><%= link_to "Profile", teacher_path(current_user.teacher.id)%></li>
+    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+  </ul>
+</li>

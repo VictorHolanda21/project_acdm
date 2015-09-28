@@ -18,6 +18,15 @@
 	<!-- main -->
 		<div class="main">
 			<div class="myAlert">
+				<% if alert  %>
+					<div class="alert alert-danger fade in">
+						<strong>
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<p><%= alert %></p>
+						</strong>
+					</div>
+				<% end %>
+				
 				<% if notice %>
 					<div class="alert alert-success fade in">
 						<strong>
@@ -26,6 +35,7 @@
 						</strong>
 					</div>
 				<% end %>
+				
 			</div>
 	
 			<%= yield %>

@@ -1,15 +1,26 @@
 class AdministratorsController < ApplicationController
+  before_filter :authenticate_user!
+
   before_action :set_administrator, only: [:show, :edit, :update, :destroy]
+
+  around_action :verify_authorize, :except => :index
 
   # GET /administrators
   # GET /administrators.json
   def index
-    @administrators = Administrator.all
+    if params[:search]
+      @administrators = Administrator.search(params[:search])
+    else
+      @administrators = Administrator.all
+    end
+    authorize @administrators
   end
+
 
   # GET /administrators/1
   # GET /administrators/1.json
   def show
+    authorize @administrator
   end
 
   # GET /administrators/new
@@ -72,5 +83,9 @@ class AdministratorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def administrator_params
       params.require(:administrator).permit(:full_name, :user_name, :user_attributes => [:email, :password])
+    end
+
+    def verify_authorize
+      authorize @administrator
     end
 end
